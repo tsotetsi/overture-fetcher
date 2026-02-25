@@ -4,3 +4,18 @@ services:
     image: overture-fetcher:latest
     volumes:
       - ./output:/output
+    networks:
+      - overture-fetcher-network
+
+  duck-ui:
+    image: ghcr.io/ibero-data/duck-ui:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - overture-fetcher-network
+    environment:
+      - DUCKDB_DATABASE=/output/free_state_buildings.geojson
+
+networks:
+  overture-fetcher-network:
+    driver: bridge
