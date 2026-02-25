@@ -1,0 +1,6 @@
+services:
+  overture-fetcher:
+    build: .
+    image: overture-fetcher:latest
+    volumes:
+      - ./output:/output
