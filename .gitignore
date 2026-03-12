@@ -1,1 +1,9 @@
+# Marscode files
 .marscode
+
+# Virtual environment
+.venv
+.env
+
+# Output files(Binary files - Parquet and GEOJSON)
+/output

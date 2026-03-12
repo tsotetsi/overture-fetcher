@@ -1,21 +1,28 @@
 services:
   overture-fetcher:
     build: .
-    image: overture-fetcher:latest
     volumes:
       - ./output:/output
     networks:
-      - overture-fetcher-network
+      - overture-network
 
   duck-ui:
     image: ghcr.io/ibero-data/duck-ui:latest
     ports:
-      - "8080:8080"
+      - "8080:5522"
     networks:
-      - overture-fetcher-network
+      - overture-network
+    volumes:
+      - ./output:/output
     environment:
-      - DUCKDB_DATABASE=/output/free_state_buildings.geojson
+      # If Duck-UI supports reading raw Parquet, this works. 
+      # Otherwise, point it to a .db file if you save as one.
+      - DUCKDB_DATABASE=/output/ward_023_roads.parquet
+    depends_on:
+      overture-fetcher:
+        #condition: service_completed_successfully
+        condition: service_started
 
 networks:
-  overture-fetcher-network:
+  overture-network:
     driver: bridge

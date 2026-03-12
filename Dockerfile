@@ -1,10 +1,12 @@
-FROM duckdb/duckdb:1.4.4
+FROM duckdb/duckdb:1.1.0
+
+# Use the JSON array form (exec form) to bypass the missing shell
+RUN ["duckdb", "-c", "INSTALL spatial; INSTALL httpfs;"]
 
 WORKDIR /app
 
-COPY fetch_free_state.sql .
+# Ensure filename consistency
+COPY ward_023_roads.sql .
 
-# Install extensions during the build process so they are part of the image.
-RUN ["duckdb", "-c", "INSTALL spatial; INSTALL httpfs;"]
-
-ENTRYPOINT ["duckdb", "-c", "LOAD spatial; LOAD httpfs; .read fetch_free_state.sql"]
+# No shell available, so we call the binary directly
+ENTRYPOINT ["duckdb", "-c", ".read ward_023_roads.sql"]
