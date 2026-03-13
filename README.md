@@ -8,8 +8,8 @@
 
 <div align="center">
 
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![DuckDB](https://img.shields.io/badge/DuckDB-v0.10.0-2496ED?logo=duckdb&logoColor=white)](https://duckdb.org/)
+[![Docker](https://img.shields.io/badge/Docker-v5.1.0-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![DuckDB](https://img.shields.io/badge/DuckDB-v1.5.0-2496ED?logo=duckdb&logoColor=white)](https://duckdb.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 </div>
