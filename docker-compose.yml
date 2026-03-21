@@ -1,10 +1,14 @@
 services:
   overture-fetcher:
     build: .
+    image: overture-fetcher
     volumes:
       - ./output:/output
     networks:
       - overture-network
+    environment:
+      - FETCH_SEGMENT=true
+      - FETCH_ADMIN=true
 
   duck-ui:
     image: ghcr.io/ibero-data/duck-ui:latest
