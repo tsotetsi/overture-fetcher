@@ -8,7 +8,7 @@ services:
       - overture-network
     environment:
       - FETCH_SEGMENT=true
-      - FETCH_ADMIN=true
+      - FETCH_DIVISIONS=true
 
   duck-ui:
     image: ghcr.io/ibero-data/duck-ui:latest
